@@ -10,11 +10,13 @@
     <header class="site-header">
       <div class="container header-inner">
         <div class="brand">
-          <div class="brand-mark">泉</div>
-          <div>
-            <p class="brand-name">和のつくり泉</p>
-            <p class="brand-sub">wanotsukuri izumi</p>
-          </div>
+          <a href="index.html" class="brand-link" aria-label="トップページへ戻る">
+            <div class="brand-mark">泉</div>
+            <div>
+              <p class="brand-name">和のつくり泉</p>
+              <p class="brand-sub">wanotsukuri izumi</p>
+            </div>
+          </a>
         </div>
         <nav class="main-nav" aria-label="メインメニュー">
           <a href="index.html">トップ</a>
@@ -47,27 +49,50 @@
           <h2>料金</h2>
           <table class="price-table">
             <tr>
-              <th>開運鑑定</th>
+              <th>
+                <span class="service-name">開運鑑定</span>
+                <div class="record-duration"><span aria-hidden="true">⏱</span> 所要時間：60分</div>
+              </th>
               <td>
-                <div>お一人様（60分程度） / 5,000円（税込）</div>
-                <div class="mini-note">あなたの悩みや迷いを丁寧にお聞きし、今の気持ちに寄り添いながら、進む方向を一緒に見つけます。</div>
+                <div class="menu-row">
+                  <div class="menu-main"></div>
+                  <div class="menu-meta">
+                    <div class="menu-price">5,000円</div>
+                    <div class="menu-caption">あなたの悩みや迷いを丁寧にお聞きし、今の気持ちに寄り添いながら、進む方向を一緒に見つけます。</div>
+                  </div>
+                </div>
               </td>
             </tr>
             <tr>
-              <th>パワーストーン</th>
+              <th>
+                <span class="service-name">パワーストーン（六芒星ブレスレット）</span>
+              </th>
               <td>
-                <div>六芒星ブレスレット / 11,000円（税込）</div>
-                <div class="mini-note">ご自身に合う石やカラーを選び、持つことで気持ちが整いやすくなるようにご案内します。</div>
+                <div class="menu-row">
+                  <div class="menu-main"></div>
+                  <div class="menu-meta">
+                    <div class="menu-price">11,000円</div>
+                    <div class="menu-caption">スタッフがあなたに合う石やカラーを選び、持つことで気持ちが整いやすくなるようにご案内します。</div>
+                  </div>
+                </div>
               </td>
             </tr>
             <tr>
-              <th>その他</th>
+              <th>
+                <span class="service-name">その他</span>
+              </th>
               <td>
-                <div>330円〜</div>
-                <div class="mini-note">小さな相談やお守り・簡単なご相談も、気軽にご利用いただけます。</div>
+                <div class="menu-row">
+                  <div class="menu-main"></div>
+                  <div class="menu-meta">
+                    <div class="menu-price">330円〜</div>
+                    <div class="menu-caption">小さな相談やお守り・簡単なご相談も、気軽にご利用いただけます。</div>
+                  </div>
+                </div>
               </td>
             </tr>
           </table>
+          <p class="small-note">※ 価格はすべて税込表示です。</p>
         </div>
 
         <div class="detail-box">
@@ -75,8 +100,60 @@
           <p>迷いや不安を抱えている方、人生の方向性を知りたい方、名前や運勢に興味がある方におすすめです。</p>
         </div>
 
-        <a class="button primary" href="line-qr.html">ご予約する</a>
+        <button class="button primary" type="button" data-open-qr>ご予約はコチラ</button>
       </section>
     </main>
+
+    <div class="qr-modal" id="qr-modal" aria-hidden="true">
+      <div class="qr-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+        <button class="qr-modal-close" type="button" aria-label="閉じる" data-close-qr>×</button>
+        <img src="images/LINE_QR.png" alt="公式LINE QRコード" />
+        <h2 id="qr-modal-title">LINEでご予約</h2>
+        <p>こちらのQRコードを読み取り、LINEからご予約・ご相談をお受けいたします。</p>
+        <div class="qr-actions">
+          <a class="line-link" href="https://line.me/R/ti/p/@izumi" target="_blank" rel="noopener noreferrer">友達追加はコチラ</a>
+          <button class="button primary" type="button" data-close-qr>元のページへ戻る</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const qrModal = document.getElementById('qr-modal');
+      const modalButtons = document.querySelectorAll('[data-open-qr]');
+      const closeButtons = document.querySelectorAll('[data-close-qr]');
+
+      const openQrModal = () => {
+        qrModal.classList.add('is-open');
+        qrModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      };
+
+      const closeQrModal = () => {
+        qrModal.classList.remove('is-open');
+        qrModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      };
+
+      modalButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          openQrModal();
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', closeQrModal);
+      });
+
+      qrModal.addEventListener('click', (event) => {
+        if (event.target === qrModal) closeQrModal();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && qrModal.classList.contains('is-open')) {
+          closeQrModal();
+        }
+      });
+    </script>
   </body>
 </html>

@@ -10,11 +10,13 @@
     <header class="site-header">
       <div class="container header-inner">
         <div class="brand">
-          <div class="brand-mark">泉</div>
-          <div>
-            <p class="brand-name">和のつくり泉</p>
-            <p class="brand-sub">wanotsukuri izumi</p>
-          </div>
+          <a href="index.html" class="brand-link" aria-label="トップページへ戻る">
+            <div class="brand-mark">泉</div>
+            <div>
+              <p class="brand-name">和のつくり泉</p>
+              <p class="brand-sub">wanotsukuri izumi</p>
+            </div>
+          </a>
         </div>
         <nav class="main-nav" aria-label="メインメニュー">
           <a href="index.html">トップ</a>
@@ -25,33 +27,6 @@
     </header>
 
     <main class="page-detail">
-      <section class="container detail-wrap">
-        <p class="eyebrow alt">健康ケア</p>
-        <h1>靴販売</h1>
-
-        <div class="detail-box">
-          <h2>取り扱い</h2>
-          <ul>
-            <li>BENESU健康靴</li>
-            <li>スリッパ</li>
-            <li>運動靴</li>
-            <li>足に合う靴選びのご相談</li>
-          </ul>
-        </div>
-
-        <div class="detail-box">
-          <h2>特徴</h2>
-          <p>足の疲れや歩き方を考えながら、日常で使いやすい靴をご提案しています。</p>
-        </div>
-
-        <div class="detail-box">
-          <h2>ご相談</h2>
-          <p>足の状態や歩き方に合わせて、快適さを感じられる靴をご案内いたします。</p>
-        </div>
-
-        <a class="button primary" href="line-qr.html">ご予約する</a>
-      </section>
-
       <section class="container detail-wrap">
         <p class="eyebrow alt">体の開運</p>
         <h1>人生が変わるBENESU健康靴</h1>
@@ -65,22 +40,63 @@
           <h2>商品一覧</h2>
           <table class="price-table">
             <tr>
-              <th>スリッパ</th>
-              <td>30,800円</td>
+              <th>
+                <span class="service-name">スリッパ</span>
+              </th>
+              <td>
+                <div class="menu-row">
+                  <div class="menu-main"></div>
+                  <div class="menu-meta">
+                    <div class="menu-price">30,800円〜</div>
+                    <div class="menu-caption">足に負担が少ない、日常使いにおすすめのスリッパです。</div>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
-              <th>運動靴</th>
-              <td>35,200円〜</td>
+              <th>
+                <span class="service-name">運動靴</span>
+              </th>
+              <td>
+                <div class="menu-row">
+                  <div class="menu-main"></div>
+                  <div class="menu-meta">
+                    <div class="menu-price">35,200円〜</div>
+                    <div class="menu-caption">歩行や姿勢を整えながら、快適な履き心地をお届けします。</div>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
-              <th>アンクルブーツ</th>
-              <td>60,500円</td>
+              <th>
+                <span class="service-name">アンクルブーツ</span>
+              </th>
+              <td>
+                <div class="menu-row">
+                  <div class="menu-main"></div>
+                  <div class="menu-meta">
+                    <div class="menu-price">60,500円〜</div>
+                    <div class="menu-caption">足のアーチを支え、カジュアルにも使いやすい一足です。</div>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
-              <th>その他</th>
-              <td>各種あり</td>
+              <th>
+                <span class="service-name">その他</span>
+              </th>
+              <td>
+                <div class="menu-row">
+                  <div class="menu-main"></div>
+                  <div class="menu-meta">
+                    <div class="menu-price">各種あり</div>
+                    <div class="menu-caption">足の状態やご希望に合わせて、最適な靴をご提案します。</div>
+                  </div>
+                </div>
+              </td>
             </tr>
           </table>
+          <p class="small-note">※ 価格はすべて税込表示です。</p>
         </div>
 
         <div class="detail-box">
@@ -88,8 +104,60 @@
           <p>慢性的な足の疲れや、姿勢や体のバランスを整えたい方におすすめです。</p>
         </div>
 
-        <a class="button primary" href="line-qr.html">ご予約する</a>
+        <button class="button primary" type="button" data-open-qr>ご予約はコチラ</button>
       </section>
     </main>
+
+    <div class="qr-modal" id="qr-modal" aria-hidden="true">
+      <div class="qr-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+        <button class="qr-modal-close" type="button" aria-label="閉じる" data-close-qr>×</button>
+        <img src="images/LINE_QR.png" alt="公式LINE QRコード" />
+        <h2 id="qr-modal-title">LINEでご予約</h2>
+        <p>こちらのQRコードを読み取り、LINEからご予約・ご相談をお受けいたします。</p>
+        <div class="qr-actions">
+          <a class="line-link" href="https://line.me/R/ti/p/@izumi" target="_blank" rel="noopener noreferrer">友達追加はコチラ</a>
+          <button class="button primary" type="button" data-close-qr>元のページへ戻る</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const qrModal = document.getElementById('qr-modal');
+      const modalButtons = document.querySelectorAll('[data-open-qr]');
+      const closeButtons = document.querySelectorAll('[data-close-qr]');
+
+      const openQrModal = () => {
+        qrModal.classList.add('is-open');
+        qrModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      };
+
+      const closeQrModal = () => {
+        qrModal.classList.remove('is-open');
+        qrModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      };
+
+      modalButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          openQrModal();
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', closeQrModal);
+      });
+
+      qrModal.addEventListener('click', (event) => {
+        if (event.target === qrModal) closeQrModal();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && qrModal.classList.contains('is-open')) {
+          closeQrModal();
+        }
+      });
+    </script>
   </body>
 </html>

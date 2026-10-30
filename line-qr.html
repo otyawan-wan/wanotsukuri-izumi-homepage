@@ -85,7 +85,7 @@
 
         <div class="qr-actions">
           <a class="line-link" href="https://line.me/R/ti/p/@izumi" target="_blank" rel="noopener noreferrer">友達追加はコチラ</a>
-          <a class="button primary" href="index.html">トップへ戻る</a>
+          <button class="button primary" type="button" onclick="if (document.referrer && document.referrer !== location.href) { history.back(); } else { location.href = 'index.html'; }">元のページへ戻る</button>
         </div>
       </div>
     </main>

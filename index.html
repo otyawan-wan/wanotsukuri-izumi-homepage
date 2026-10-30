@@ -14,11 +14,13 @@
     <header class="site-header">
       <div class="container header-inner">
         <div class="brand">
-          <div class="brand-mark">泉</div>
-          <div>
-            <p class="brand-name">和のつくり泉</p>
-            <p class="brand-sub">wanotsukuri izumi</p>
-          </div>
+          <a href="index.html" class="brand-link" aria-label="トップページへ戻る">
+            <div class="brand-mark">泉</div>
+            <div>
+              <p class="brand-name">和のつくり泉</p>
+              <p class="brand-sub">wanotsukuri izumi</p>
+            </div>
+          </a>
         </div>
 
         <nav class="main-nav" aria-label="メインメニュー">
@@ -27,9 +29,22 @@
           <a href="#access">アクセス</a>
         </nav>
 
-        <a class="button header-button" href="line-qr.html">ご予約</a>
+        <button class="button header-button" type="button" data-open-qr>ご予約はコチラ</button>
       </div>
     </header>
+
+    <div class="qr-modal" id="qr-modal" aria-hidden="true">
+      <div class="qr-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title">
+        <button class="qr-modal-close" type="button" aria-label="閉じる" data-close-qr>×</button>
+        <img src="images/LINE_QR.png" alt="公式LINE QRコード" />
+        <h2 id="qr-modal-title">LINEでご予約</h2>
+        <p>こちらのQRコードを読み取り、LINEからご予約・ご相談をお受けいたします。</p>
+        <div class="qr-actions">
+          <a class="line-link" href="https://line.me/R/ti/p/@izumi" target="_blank" rel="noopener noreferrer">友達追加はコチラ</a>
+          <button class="button primary" type="button" data-close-qr>元のページへ戻る</button>
+        </div>
+      </div>
+    </div>
 
     <main>
       <section class="hero">
@@ -200,7 +215,6 @@
         <div class="container visit-grid">
           <div>
             <p class="eyebrow alt">Access</p>
-            <h2>穏やかな時間をお過ごしください。</h2>
             <ul class="info-list">
               <li><strong>住所</strong>：〒832-0081 福岡県柳川市西浜武761-1</li>
               <li><strong>営業時間</strong>：10:30〜18:30（毎週火曜日、不定休）</li>
@@ -214,8 +228,8 @@
               <img src="images/map.png" alt="アクセス地図" class="map-image" />
             </a>
             <ul class="access-points">
-              <li><span aria-hidden="true">🚕</span> 柳川駅から約7分</li>
               <li><span aria-hidden="true">🅿️</span> 駐車場あり</li>
+              <li><span aria-hidden="true">🚕</span> 柳川駅から約7分</li>
               <li><span aria-hidden="true">🚗</span> 柳川西ICから約7分</li>
               <li><span aria-hidden="true">🚗</span> 大川西ICから約6分</li>
             </ul>
@@ -237,5 +251,44 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      const qrModal = document.getElementById('qr-modal');
+      const modalButtons = document.querySelectorAll('[data-open-qr]');
+      const closeButtons = document.querySelectorAll('[data-close-qr]');
+
+      const openQrModal = () => {
+        qrModal.classList.add('is-open');
+        qrModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      };
+
+      const closeQrModal = () => {
+        qrModal.classList.remove('is-open');
+        qrModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      };
+
+      modalButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          openQrModal();
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', closeQrModal);
+      });
+
+      qrModal.addEventListener('click', (event) => {
+        if (event.target === qrModal) closeQrModal();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && qrModal.classList.contains('is-open')) {
+          closeQrModal();
+        }
+      });
+    </script>
   </body>
 </html>
