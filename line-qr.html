@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LINEでご予約 | 和のつくり泉</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background: var(--ivory);
+      }
+
+      .qr-page {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 40px 20px;
+      }
+
+      .qr-wrap {
+        max-width: 540px;
+        width: 100%;
+        background: rgba(255,255,255,0.8);
+        border: 1px solid rgba(31, 62, 52, 0.08);
+        border-radius: 32px;
+        box-shadow: var(--shadow);
+        padding: 28px 28px 24px;
+        text-align: center;
+      }
+
+      .qr-image {
+        width: min(100%, 420px);
+        height: auto;
+        display: block;
+        margin: 0 auto 22px;
+        border-radius: 18px;
+        background: #fff;
+        border: 14px solid #111;
+      }
+
+      .qr-wrap h1 {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        letter-spacing: -0.04em;
+      }
+
+      .qr-wrap p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .qr-actions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .line-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 220px;
+        padding: 0.9rem 1.4rem;
+        border-radius: 999px;
+        font-weight: 700;
+        background: #06c755;
+        color: #fff;
+        box-shadow: 0 12px 24px rgba(6, 199, 85, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="qr-page">
+      <div class="qr-wrap">
+        <img src="images/LINE_QR.png" alt="公式LINE QRコード" class="qr-image" />
+
+        <h1>LINEでご予約</h1>
+        <p>
+          こちらのQRコードを読み取り、<br />
+          LINEからご予約・ご相談をお受けいたします。
+        </p>
+
+        <div class="qr-actions">
+          <a class="line-link" href="https://line.me/R/ti/p/@izumi" target="_blank" rel="noopener noreferrer">友達追加はコチラ</a>
+          <a class="button primary" href="index.html">トップへ戻る</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
